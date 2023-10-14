@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NomePersonagem from "./pages/CharacterDetailPage/NomePersonagem";
+import NomePersonagem from "./pages/CharacterListPage/NomePersonagem";
 
 class App extends Component {
   render() {
