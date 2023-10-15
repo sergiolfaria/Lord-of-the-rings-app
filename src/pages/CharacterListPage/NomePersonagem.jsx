@@ -29,15 +29,28 @@ const Error = styled.div`
   color: red;
 `;
 
-const CharacterList = styled.ul`
-  list-style: none;
-  padding: 0;
+const CharacterGrid = styled.div`
+    display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 40px -10px;
 `;
 
-const CharacterListItem = styled.li`
-  font-size: 18px;
-  margin: 10px 0;
+const CharacterCard = styled.div`
+  flex-basis: calc(33.33% - 20px);
+  margin: 0 5px 5px 5px;
+  border: 1px solid #ccc;
+  text-align: center;
   cursor: pointer;
+`;
+
+const CharacterName = styled.h2`
+  font-size: 20px;
+`;
+
+const CharacterInfo = styled.div`
+  font-size: 16px;
+  margin-top: 10px;
 `;
 
 const SearchInput = styled.input`
@@ -46,12 +59,18 @@ const SearchInput = styled.input`
   margin-bottom: 10px;
 `;
 
+const RaceSelect = styled.select`
+  font-size: 16px;
+  padding: 5px;
+`;
+
 class NomePersonagem extends Component {
   state = {
     apiData: null,
     loading: true,
     error: null,
     filterText: '',
+    selectedRace: 'All',
   };
 
   handleCharacterClick = (name) => {
@@ -77,12 +96,19 @@ class NomePersonagem extends Component {
     this.setState({ filterText: event.target.value });
   };
 
+  handleRaceSelectChange = (event) => {
+    this.setState({ selectedRace: event.target.value });
+  };
+
   render() {
-    const { apiData, loading, error, filterText } = this.state;
+    const { apiData, loading, error, filterText, selectedRace } = this.state;
 
     const filteredCharacters = apiData ? apiData.filter(character =>
-      character.name.toLowerCase().includes(filterText.toLowerCase())
+      character.name.toLowerCase().includes(filterText.toLowerCase()) &&
+      (selectedRace === 'All' || character.race.toLowerCase() === selectedRace.toLowerCase())
     ) : [];
+
+    const uniqueRaces = apiData ? [...new Set(apiData.map(character => character.race))] : [];
 
     return (
       <Container>
@@ -97,13 +123,29 @@ class NomePersonagem extends Component {
               value={filterText}
               onChange={this.handleFilterChange}
             />
-            <CharacterList>
-              {filteredCharacters.map((character, index) => (
-                <CharacterListItem key={index} onClick={() => this.handleCharacterClick(character.name)}>
-                  {character.name}
-                </CharacterListItem>
+            <RaceSelect
+              value={selectedRace}
+              onChange={this.handleRaceSelectChange}
+            >
+              <option value="All">Todas as Raças</option>
+              {uniqueRaces.map((race, index) => (
+                <option key={index} value={race}>
+                  {race}
+                </option>
               ))}
-            </CharacterList>
+            </RaceSelect>
+            <CharacterGrid>
+              {filteredCharacters.map((character, index) => (
+                <CharacterCard key={index} onClick={() => this.handleCharacterClick(character.name)}>
+                  <CharacterName>{character.name}</CharacterName>
+                  <CharacterInfo>
+                    <p><strong>Raça:</strong> {character.race}</p>
+                    <p><strong>Data de Nascimento:</strong> {character.birth}</p>
+                    <p><strong>Reino:</strong> {character.realm}</p>
+                  </CharacterInfo>
+                </CharacterCard>
+              ))}
+            </CharacterGrid>
           </div>
         )}
       </Container>
