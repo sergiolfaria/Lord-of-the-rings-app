@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import NomePersonagem from "./pages/CharacterListPage/NomePersonagem";
 import DetalhePersonagem from "./pages/CharacterDetailPage/DetalhesPersonagem";
+import styled from 'styled-components';
+
+const BackButton = styled.button`
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 50px;
+  cursor: pointer;
+`;
 
 class App extends Component {
   state = {
@@ -8,7 +16,7 @@ class App extends Component {
     characterName: null,
   };
 
-  ClickPersonagem   = (name) => {
+  ClickPersonagem = (name) => {
     this.setState({
       NomeOuDetalhe: true,
       characterName: name,
@@ -24,8 +32,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        {this.state.NomeOuDetalhe ? (<button onClick={this.BotãoDeVoltar}>Voltar</button> ) : ('')}
-        {this.state.NomeOuDetalhe ? (<DetalhePersonagem characterName={this.state.characterName} /> ) : ( <NomePersonagem onCharacterClick={this.ClickPersonagem} /> )}
+        {this.state.NomeOuDetalhe ? <BackButton onClick={this.BotãoDeVoltar}>Voltar</BackButton> : ('')}
+        {this.state.NomeOuDetalhe ? (<DetalhePersonagem characterName={this.state.characterName} />) : (<NomePersonagem onCharacterClick={this.ClickPersonagem} />)}
       </div>
     );
   }

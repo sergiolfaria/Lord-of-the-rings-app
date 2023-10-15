@@ -37,15 +37,23 @@ const CharacterList = styled.ul`
 const CharacterListItem = styled.li`
   font-size: 18px;
   margin: 10px 0;
+  cursor: pointer;
+`;
+
+const SearchInput = styled.input`
+  font-size: 16px;
+  padding: 5px;
+  margin-bottom: 10px;
 `;
 
 class NomePersonagem extends Component {
   state = {
     apiData: null,
     loading: true,
-    error: null
+    error: null,
+    filterText: '',
   };
-  
+
   handleCharacterClick = (name) => {
     this.props.onCharacterClick(name);
   };
@@ -65,8 +73,16 @@ class NomePersonagem extends Component {
     });
   }
 
+  handleFilterChange = (event) => {
+    this.setState({ filterText: event.target.value });
+  };
+
   render() {
-    const { apiData, loading, error } = this.state;
+    const { apiData, loading, error, filterText } = this.state;
+
+    const filteredCharacters = apiData ? apiData.filter(character =>
+      character.name.toLowerCase().includes(filterText.toLowerCase())
+    ) : [];
 
     return (
       <Container>
@@ -75,8 +91,14 @@ class NomePersonagem extends Component {
         {apiData && (
           <div>
             <h1>Nomes dos Personagens:</h1>
+            <SearchInput
+              type="text"
+              placeholder="Filtrar personagens"
+              value={filterText}
+              onChange={this.handleFilterChange}
+            />
             <CharacterList>
-              {apiData.map((character, index) => (
+              {filteredCharacters.map((character, index) => (
                 <CharacterListItem key={index} onClick={() => this.handleCharacterClick(character.name)}>
                   {character.name}
                 </CharacterListItem>
