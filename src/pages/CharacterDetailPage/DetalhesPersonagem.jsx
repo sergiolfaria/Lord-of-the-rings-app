@@ -31,18 +31,22 @@ class DetalhePersonagem extends Component {
   };
 
   componentDidMount() {
-    axios.get('https://the-one-api.dev/v2/character', {
-      headers: {
-        Authorization: `Bearer qSslRdCPhKmZlupbd0vf`
-      }
-    })
-    .then(response => {
-      this.setState({ apiData: response.data.docs, loading: false, error: null });
-    })
-    .catch(error => {
-      console.error('Erro ao buscar dados:', error);
-      this.setState({ loading: false, error: 'Erro ao carregar dados.' });
-    });
+    const characterName = this.props.characterName;
+
+    if (characterName) {
+      axios.get(`https://the-one-api.dev/v2/character?name=${characterName}`, {
+        headers: {
+          Authorization: `Bearer qSslRdCPhKmZlupbd0vf`
+        }
+      })
+      .then(response => {
+        this.setState({ apiData: response.data.docs, loading: false, error: null });
+      })
+      .catch(error => {
+        console.error('Erro ao buscar dados:', error);
+        this.setState({ loading: false, error: 'Erro ao carregar dados.' });
+      });
+    }
   }
 
   render() {

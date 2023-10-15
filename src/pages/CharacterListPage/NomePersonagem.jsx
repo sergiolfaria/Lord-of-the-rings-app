@@ -45,6 +45,10 @@ class NomePersonagem extends Component {
     loading: true,
     error: null
   };
+  
+  handleCharacterClick = (name) => {
+    this.props.onCharacterClick(name);
+  };
 
   componentDidMount() {
     axios.get('https://the-one-api.dev/v2/character', {
@@ -73,7 +77,9 @@ class NomePersonagem extends Component {
             <h1>Nomes dos Personagens:</h1>
             <CharacterList>
               {apiData.map((character, index) => (
-                <CharacterListItem key={index}>{character.name}</CharacterListItem>
+                <CharacterListItem key={index} onClick={() => this.handleCharacterClick(character.name)}>
+                  {character.name}
+                </CharacterListItem>
               ))}
             </CharacterList>
           </div>
