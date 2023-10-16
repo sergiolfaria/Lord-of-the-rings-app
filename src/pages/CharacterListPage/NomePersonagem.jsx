@@ -141,7 +141,7 @@ class NomePersonagem extends Component {
                   <CharacterInfo>
                     <p><strong>Raça:</strong> {character.race}</p>
                     <p><strong>Data de Nascimento:</strong> {character.birth}</p>
-                    <p><strong>Reino:</strong> {character.realm || 'Desconhecido'}</p>
+                    <p><strong>Reino:</strong> {character.realm || 'Desconhecido ou não possui'}</p>
                   </CharacterInfo>
                 </CharacterCard>
               ))}
