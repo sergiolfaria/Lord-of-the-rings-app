@@ -33,7 +33,7 @@ const CharacterGrid = styled.div`
     display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 40px -10px;
+  margin: 40px  10px;
 `;
 
 const CharacterCard = styled.div`
