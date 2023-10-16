@@ -64,8 +64,11 @@ class DetalhePersonagem extends Component {
                 <h2>{character.name}</h2>
                 <CharacterDetails>
                   <p><strong>Raça:</strong> {character.race}</p>
+                  <p><strong>genero:</strong> {character.gender}</p>
                   <p><strong>Data de Nascimento:</strong> {character.birth}</p>
                   <p><strong>Data de Morte:</strong> {character.death || 'Desconhecido'}</p>
+                  <p><strong>Reino:</strong> {character.realm || 'Desconhecido'}</p>
+                  <p><strong>WikiUrl:</strong> <a href={character.wikiUrl} target="_blank" rel="noopener noreferrer">{character.wikiUrl}</a></p>
                 </CharacterDetails>
               </div>
             ))}
