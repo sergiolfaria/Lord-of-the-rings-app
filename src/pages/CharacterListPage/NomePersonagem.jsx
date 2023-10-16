@@ -30,10 +30,10 @@ const Error = styled.div`
 `;
 
 const CharacterGrid = styled.div`
-    display: flex;
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 40px  10px;
+  margin: 40px 10px;
 `;
 
 const CharacterCard = styled.div`
@@ -64,6 +64,11 @@ const RaceSelect = styled.select`
   padding: 5px;
 `;
 
+const RealmSelect = styled.select`
+  font-size: 16px;
+  padding: 5px;
+`;
+
 class NomePersonagem extends Component {
   state = {
     apiData: null,
@@ -71,6 +76,7 @@ class NomePersonagem extends Component {
     error: null,
     filterText: '',
     selectedRace: 'All',
+    selectedRealm: 'All',
   };
 
   handleCharacterClick = (name) => {
@@ -83,13 +89,13 @@ class NomePersonagem extends Component {
         Authorization: `Bearer qSslRdCPhKmZlupbd0vf`
       }
     })
-    .then(response => {
-      this.setState({ apiData: response.data.docs, loading: false, error: null });
-    })
-    .catch(error => {
-      console.error('Erro ao buscar dados:', error);
-      this.setState({ loading: false, error: 'Erro ao carregar dados.' });
-    });
+      .then(response => {
+        this.setState({ apiData: response.data.docs, loading: false, error: null });
+      })
+      .catch(error => {
+        console.error('Erro ao buscar dados:', error);
+        this.setState({ loading: false, error: 'Erro ao carregar dados.' });
+      });
   }
 
   handleFilterChange = (event) => {
@@ -100,15 +106,22 @@ class NomePersonagem extends Component {
     this.setState({ selectedRace: event.target.value });
   };
 
-  render() {
-    const { apiData, loading, error, filterText, selectedRace } = this.state;
+  handleRealmSelectChange = (event) => {
+    this.setState({ selectedRealm: event.target.value });
+  };
 
-    const filteredCharacters = apiData ? apiData.filter(character =>
+  render() {
+    const { apiData, loading, error, filterText, selectedRace, selectedRealm } = this.state;
+
+    const filteredCharacters = apiData ? apiData.filter((character) =>
       character.name.toLowerCase().includes(filterText.toLowerCase()) &&
-      (selectedRace === 'All' || character.race.toLowerCase() === selectedRace.toLowerCase())
-    ) : [];
+      (selectedRace === 'All' || character.race.toLowerCase() === selectedRace.toLowerCase()) &&
+      (selectedRealm === 'All' || (character.realm && character.realm.toLowerCase() === selectedRealm.toLowerCase()))
+    )
+      : [];
 
     const uniqueRaces = apiData ? [...new Set(apiData.map(character => character.race))] : [];
+    const uniqueRealms = apiData ? [...new Set(apiData.map(character => character.realm))] : [];
 
     return (
       <Container>
@@ -134,6 +147,17 @@ class NomePersonagem extends Component {
                 </option>
               ))}
             </RaceSelect>
+            <RealmSelect
+              value={selectedRealm}
+              onChange={this.handleRealmSelectChange}
+            >
+              <option value="All">Todos os Reinos</option>
+              {uniqueRealms.map((realm, index) => (
+                <option key={index} value={realm}>
+                  {realm}
+                </option>
+              ))}
+            </RealmSelect>
             <CharacterGrid>
               {filteredCharacters.map((character, index) => (
                 <CharacterCard key={index} onClick={() => this.handleCharacterClick(character.name)}>
