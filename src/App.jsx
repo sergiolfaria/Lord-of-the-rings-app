@@ -3,7 +3,7 @@ import NomePersonagem from "./pages/CharacterListPage/NomePersonagem";
 import DetalhePersonagem from "./pages/CharacterDetailPage/DetalhesPersonagem";
 import styled from 'styled-components';
 import ScrollToTopPopup from './components/ScrollToTopPopup';
-import BackButton from './components/BackButton'; // Importe o componente BackButton
+import BackButton from './components/BackButton';
 
 const AppContainer = styled.div`
   position: relative;
@@ -39,9 +39,7 @@ class App extends Component {
             <BackButton onClick={this.BotãoDeVoltar} />
           </div>
         ) : (
-          <div>
-            <NomePersonagem onCharacterClick={this.ClickPersonagem} />
-          </div>
+          <NomePersonagem onCharacterClick={this.ClickPersonagem} />
         )}
       </AppContainer>
     );

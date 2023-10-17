@@ -3,6 +3,8 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import FilterFields from '../../components/FilterFields';
+import CharacterCard from '../../components/CharacterCard';
 
 const Container = styled.div`
   font-family: Arial, sans-serif;
@@ -36,14 +38,6 @@ const CharacterGrid = styled.div`
   margin: 40px 10px;
 `;
 
-const CharacterCard = styled.div`
-  flex-basis: calc(33.33% - 20px);
-  margin: 0 5px 5px 5px;
-  border: 1px solid #ccc;
-  text-align: center;
-  cursor: pointer;
-`;
-
 const CharacterName = styled.h2`
   font-size: 20px;
 `;
@@ -51,22 +45,6 @@ const CharacterName = styled.h2`
 const CharacterInfo = styled.div`
   font-size: 16px;
   margin-top: 10px;
-`;
-
-const SearchInput = styled.input`
-  font-size: 16px;
-  padding: 5px;
-  margin-bottom: 10px;
-`;
-
-const RaceSelect = styled.select`
-  font-size: 16px;
-  padding: 5px;
-`;
-
-const RealmSelect = styled.select`
-  font-size: 16px;
-  padding: 5px;
 `;
 
 class NomePersonagem extends Component {
@@ -109,23 +87,28 @@ class NomePersonagem extends Component {
   handleRealmSelectChange = (event) => {
     this.setState({ selectedRealm: event.target.value });
   };
+  handleClearFilters = () => {
+    this.setState({
+      filterText: '',
+      selectedRace: 'All',
+      selectedRealm: 'All',
+    });
+  };
 
   render() {
     const { apiData, loading, error, filterText, selectedRace, selectedRealm } = this.state;
 
-    const filteredCharacters = apiData ? apiData.filter((character) =>
-  character.name.toLowerCase().includes(filterText.toLowerCase()) &&
-  (selectedRace === 'All' || character.race.toLowerCase() === selectedRace.toLowerCase()) &&
-  (selectedRealm === 'All' || 
-    (selectedRealm.toLowerCase() === 'desconhecido' && (!character.realm || character.realm.trim() === '')) ||
-    (character.realm && character.realm.toLowerCase() === selectedRealm.toLowerCase())
-  )
-) : [];
-
-  
-
     const uniqueRaces = apiData ? [...new Set(apiData.map(character => character.race))] : [];
     const uniqueRealms = apiData ? [...new Set(apiData.map(character => character.realm))] : [];
+
+    const filteredCharacters = apiData ? apiData.filter((character) =>
+      character.name.toLowerCase().includes(filterText.toLowerCase()) &&
+      (selectedRace === 'All' || character.race.toLowerCase() === selectedRace.toLowerCase()) &&
+      (selectedRealm === 'All' || 
+        (selectedRealm.toLowerCase() === 'desconhecido' && (!character.realm || character.realm.trim() === '')) ||
+        (character.realm && character.realm.toLowerCase() === selectedRealm.toLowerCase())
+      )
+    ) : [];
 
     return (
       <Container>
@@ -133,45 +116,21 @@ class NomePersonagem extends Component {
         {error && <Error>Error: {error}</Error>}
         {apiData && (
           <div>
-            <h1>Nomes dos Personagens:</h1>
-            <SearchInput
-              type="text"
-              placeholder="Filtrar personagens"
-              value={filterText}
-              onChange={this.handleFilterChange}
+            <img src='https://upload.wikimedia.org/wikipedia/pt/0/0c/The_Lord_of_the_Rings_logo.png' alt='logo'/>
+            <FilterFields
+              filterText={filterText}
+              selectedRace={selectedRace}
+              selectedRealm={selectedRealm}
+              uniqueRaces={uniqueRaces}
+              uniqueRealms={uniqueRealms}
+              onFilterChange={this.handleFilterChange}
+              onRaceSelectChange={this.handleRaceSelectChange}
+              onRealmSelectChange={this.handleRealmSelectChange}
+              onClearFilters={this.handleClearFilters}
             />
-            <RaceSelect
-              value={selectedRace}
-              onChange={this.handleRaceSelectChange}
-            >
-              <option value="All">Todas as Raças</option>
-              {uniqueRaces.map((race, index) => (
-                <option key={index} value={race}>
-                  {race}
-                </option>
-              ))}
-            </RaceSelect>
-            <RealmSelect
-              value={selectedRealm}
-              onChange={this.handleRealmSelectChange}
-            >
-              <option value="All">Todos os Reinos</option>
-              {uniqueRealms.map((realm, index) => (
-                <option key={index} value={realm.length > 0 ? realm : 'desconhecido'}>
-                  {realm.length > 0 ? realm : 'Desconhecido'}
-                </option>
-              ))}
-            </RealmSelect>
             <CharacterGrid>
               {filteredCharacters.map((character, index) => (
-                <CharacterCard key={index} onClick={() => this.handleCharacterClick(character.name)}>
-                  <CharacterName>{character.name}</CharacterName>
-                  <CharacterInfo>
-                    <p><strong>Raça:</strong> {character.race}</p>
-                    <p><strong>Data de Nascimento:</strong> {character.birth}</p>
-                    <p><strong>Reino:</strong> {character.realm || 'Desconhecido ou não possui'}</p>
-                  </CharacterInfo>
-                </CharacterCard>
+                <CharacterCard key={index} character={character} onCharacterClick={this.handleCharacterClick} />
               ))}
             </CharacterGrid>
           </div>

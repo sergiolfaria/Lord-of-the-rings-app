@@ -13,7 +13,8 @@ const PopupContainer = styled.div`
   visibility: ${(props) => (props.showPopup ? 'visible' : 'hidden')};
   opacity: ${(props) => (props.showPopup ? 1 : 0)};
   transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
-  
+  z-index: 1;
+
   &:hover {
     transform: scale(1.05);
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import CharacterDetails from '../../components/CharacterDetails';
 
 const Container = styled.div`
   font-family: Arial, sans-serif;
@@ -18,12 +19,7 @@ const Error = styled.div`
   color: red;
 `;
 
-const CharacterDetails = styled.div`
-  font-size: 14px;
-  margin-top: 10px;
-`;
-
-class DetalhePersonagem extends Component {
+class DetalhesPersonagem extends Component {
   state = {
     apiData: null,
     loading: true,
@@ -61,15 +57,7 @@ class DetalhePersonagem extends Component {
             <h1>Detalhes dos Personagens:</h1>
             {apiData.map((character, index) => (
               <div key={index}>
-                <h2>{character.name}</h2>
-                <CharacterDetails>
-                  <p><strong>Raça:</strong> {character.race}</p>
-                  <p><strong>genero:</strong> {character.gender}</p>
-                  <p><strong>Data de Nascimento:</strong> {character.birth}</p>
-                  <p><strong>Data de Morte:</strong> {character.death || 'Desconhecido'}</p>
-                  <p><strong>Reino:</strong> {character.realm || 'Desconhecido ou não possui'}</p>
-                  <p><strong>WikiUrl:</strong> <a href={character.wikiUrl} target="_blank" rel="noopener noreferrer">{character.wikiUrl || 'Não Possui'}</a></p>
-                </CharacterDetails>
+                <CharacterDetails character={character} />
               </div>
             ))}
           </div>
@@ -79,4 +67,4 @@ class DetalhePersonagem extends Component {
   }
 }
 
-export default DetalhePersonagem;
+export default DetalhesPersonagem;
