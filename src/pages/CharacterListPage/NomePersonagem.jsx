@@ -114,11 +114,15 @@ class NomePersonagem extends Component {
     const { apiData, loading, error, filterText, selectedRace, selectedRealm } = this.state;
 
     const filteredCharacters = apiData ? apiData.filter((character) =>
-      character.name.toLowerCase().includes(filterText.toLowerCase()) &&
-      (selectedRace === 'All' || character.race.toLowerCase() === selectedRace.toLowerCase()) &&
-      (selectedRealm === 'All' || (character.realm && character.realm.toLowerCase() === selectedRealm.toLowerCase()))
-    )
-      : [];
+  character.name.toLowerCase().includes(filterText.toLowerCase()) &&
+  (selectedRace === 'All' || character.race.toLowerCase() === selectedRace.toLowerCase()) &&
+  (selectedRealm === 'All' || 
+    (selectedRealm.toLowerCase() === 'desconhecido' && (!character.realm || character.realm.trim() === '')) ||
+    (character.realm && character.realm.toLowerCase() === selectedRealm.toLowerCase())
+  )
+) : [];
+
+  
 
     const uniqueRaces = apiData ? [...new Set(apiData.map(character => character.race))] : [];
     const uniqueRealms = apiData ? [...new Set(apiData.map(character => character.realm))] : [];
@@ -153,8 +157,8 @@ class NomePersonagem extends Component {
             >
               <option value="All">Todos os Reinos</option>
               {uniqueRealms.map((realm, index) => (
-                <option key={index} value={realm}>
-                  {realm}
+                <option key={index} value={realm.length > 0 ? realm : 'desconhecido'}>
+                  {realm.length > 0 ? realm : 'Desconhecido'}
                 </option>
               ))}
             </RealmSelect>
