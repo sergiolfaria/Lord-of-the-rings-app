@@ -1,5 +1,42 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+
+const FilmesContainer = styled.div`
+  background-color: #f7f7f7c8;
+  max-width: 60%;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  display: block;
+`;
+
+const ErrorMessage = styled.p`
+  color: #ff0000;
+  font-weight: bold;
+`;
+
+const FilmeList = styled.ul`
+  list-style-type: none;
+  padding: 0;
+`;
+
+const FilmeItem = styled.li`
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #af8f01ae;
+  }
+`;
+
 
 class NomeFilmes extends Component {
   state = {
@@ -23,28 +60,28 @@ class NomeFilmes extends Component {
       });
   }
 
-  handleLivroClick = (Filme) => {
-    this.props.onLivroClick(Filme);
-  };
-
   render() {
     const { apiData, loading, error } = this.state;
 
     return (
-      <div>
+      <FilmesContainer>
         {loading && <p>Carregando...</p>}
-        {error && <p>Error: {error}</p>}
+        {error && <ErrorMessage>Error: {error}</ErrorMessage>}
         {apiData.length > 0 && (
           <div>
             <h1>Lista de Filmes</h1>
-            <ul>
+            <FilmeList>
               {apiData.map((Filme, index) => (
-                <li key={index} onClick={() => this.handleLivroClick(Filme)}>{Filme.name}</li>
+                <FilmeItem
+                  key={index}
+                >
+                  {Filme.name}
+                </FilmeItem>
               ))}
-            </ul>
+            </FilmeList>
           </div>
         )}
-      </div>
+      </FilmesContainer>
     );
   }
 }

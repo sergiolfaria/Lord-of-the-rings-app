@@ -7,11 +7,12 @@ const Card = styled.div`
   border: 1px solid #ccc;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.3s;
-  background-color: white;
+  transition: 0.3s;
+  background-color: #ffffffac;
   &:hover {
     transform: scale(1.08);
-    background-color: #af8f0167;
+    background-color: #c7a302cc;
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 `;

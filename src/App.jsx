@@ -1,43 +1,36 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import NomePersonagem from "./pages/ListPage/NomePersonagem";
 import DetalhePersonagem from "./pages/DetailPage/DetalhesPersonagem";
 import NomeLivros from './pages/ListPage/NomesLivros';
-import styled from 'styled-components';
+import NomeFilmes from "./pages/ListPage/NomesFilmes";
 import ScrollToTopPopup from './components/ScrollToTopPopup';
 import BackButton from './components/BackButton';
-import NomeFilmes from "./pages/ListPage/NomesFilmes";
+import Navbar from './components/NavBar';
 
 const AppContainer = styled.div`
   position: relative;
 `;
-const Nav = styled.div`
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  background-color: #333;
-  color: white;
-`;
-const BtnNav = styled.button`
-    margin: 0;
-    padding: 2vh 20px; 
-    background: none;
-    border: none; 
-    border-left: 1px solid black; 
-    border-right: 1px solid black; 
-    color: white;
-    cursor: pointer;
 
-    &:hover {
-        background-color: #b9b922; 
-    }
+const BackgroundImage = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://images4.alphacoders.com/172/172304.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -1; /* Coloque o background atrás do conteúdo */
 `;
 
-const RightContent = styled.div`
-  display: flex;
-  margin-right:1%;
+const LogoImage = styled.img`
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding-top: 50px;
+  display: block;
 `;
-
-
 
 class App extends Component {
   state = {
@@ -89,13 +82,13 @@ class App extends Component {
   render() {
     return (
       <AppContainer>
-        <Nav>
-          <RightContent>
-            <BtnNav onClick={this.MostrarLivros}>Mostrar Livros</BtnNav>
-            <BtnNav onClick={this.MostrarFilmes}>Mostrar Filmes</BtnNav>
-            <BtnNav onClick={this.MostrarPersonagens}>Mostrar Personagens</BtnNav>
-          </RightContent>
-        </Nav>
+        <BackgroundImage />
+        <Navbar
+          onLivrosClick={this.MostrarLivros}
+          onFilmesClick={this.MostrarFilmes}
+          onPersonagensClick={this.MostrarPersonagens}
+        />
+        <LogoImage src="https://upload.wikimedia.org/wikipedia/pt/0/0c/The_Lord_of_the_Rings_logo.png" alt="logo" />
         {
           this.state.ListarLivros ? (
             <NomeLivros />

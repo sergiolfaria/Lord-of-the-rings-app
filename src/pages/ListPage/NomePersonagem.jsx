@@ -3,7 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import FilterFields from '../../components/InputsParaFilter';
+import FilterFields from '../../components/FilterFields';
 import CharacterCard from '../../components/CharacterCard';
 
 const Container = styled.div`
@@ -108,7 +108,6 @@ class NomePersonagem extends Component {
         {error && <Error>Error: {error}</Error>}
         {apiData && (
           <div>
-            <img src='https://upload.wikimedia.org/wikipedia/pt/0/0c/The_Lord_of_the_Rings_logo.png' alt='logo'/>
             <FilterFields
               filterText={filterText}
               selectedRace={selectedRace}
