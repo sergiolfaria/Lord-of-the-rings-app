@@ -6,7 +6,6 @@ const FilterContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
 `;
 
 const SearchInput = styled.input`

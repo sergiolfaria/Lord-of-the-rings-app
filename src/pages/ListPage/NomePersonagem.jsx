@@ -3,7 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import FilterFields from '../../components/FilterFields';
+import FilterFields from '../../components/InputsParaFilter';
 import CharacterCard from '../../components/CharacterCard';
 
 const Container = styled.div`

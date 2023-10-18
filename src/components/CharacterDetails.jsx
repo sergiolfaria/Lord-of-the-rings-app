@@ -5,7 +5,6 @@ const CharacterDetailsContainer = styled.div`
   font-size: 14px;
   margin-top: 10px;
 `;
-
 class CharacterDetails extends Component {
   render() {
     const { character } = this.props;
