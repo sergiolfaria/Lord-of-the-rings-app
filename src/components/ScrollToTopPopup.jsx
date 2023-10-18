@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 const PopupContainer = styled.div`
   position: fixed;
@@ -44,7 +46,7 @@ const ScrollToTopPopup = () => {
 
   return (
     <PopupContainer showPopup={showPopup} onClick={scrollToTop}>
-      ^
+     <FontAwesomeIcon icon={faArrowUp} style={{ color: "#ffffff" }} />
     </PopupContainer>
   );
   

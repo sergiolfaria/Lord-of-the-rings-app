@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 const StyledBackButton = styled.button`
   font-family: Arial, sans-serif;
@@ -21,7 +23,7 @@ const StyledBackButton = styled.button`
 `;
 
 const BackButton = ({ onClick }) => (
-  <StyledBackButton onClick={onClick}>{'<'}</StyledBackButton>
+  <StyledBackButton onClick={onClick}>{<FontAwesomeIcon icon={ faArrowUp } rotation={270} style={{color: "#fff",}} />}</StyledBackButton>
 );
 
 export default BackButton;

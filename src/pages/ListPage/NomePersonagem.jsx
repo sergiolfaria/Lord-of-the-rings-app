@@ -38,14 +38,6 @@ const CharacterGrid = styled.div`
   margin: 40px 10px;
 `;
 
-const CharacterName = styled.h2`
-  font-size: 20px;
-`;
-
-const CharacterInfo = styled.div`
-  font-size: 16px;
-  margin-top: 10px;
-`;
 
 class NomePersonagem extends Component {
   state = {

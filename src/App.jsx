@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import NomePersonagem from "./pages/CharacterListPage/NomePersonagem";
-import DetalhePersonagem from "./pages/CharacterDetailPage/DetalhesPersonagem";
+import NomePersonagem from "./pages/ListPage/NomePersonagem";
+import DetalhePersonagem from "./pages/DetailPage/DetalhesPersonagem";
+import NomeLivros from './pages/ListPage/NomesLivros';
 import styled from 'styled-components';
 import ScrollToTopPopup from './components/ScrollToTopPopup';
 import BackButton from './components/BackButton';
@@ -11,20 +12,22 @@ const AppContainer = styled.div`
 
 class App extends Component {
   state = {
-    NomeOuDetalhe: false,
+    ListarLivros: false,
+    ListarPersonagens: true,
+    PersonagensOuDetalhes: false,
     characterName: null,
   };
 
   ClickPersonagem = (name) => {
     this.setState({
-      NomeOuDetalhe: true,
+      PersonagensOuDetalhes: true,
       characterName: name,
     });
   };
 
   BotãoDeVoltar = () => {
     this.setState({
-      NomeOuDetalhe: false,
+      PersonagensOuDetalhes: false,
       characterName: null,
     });
   };
@@ -32,15 +35,21 @@ class App extends Component {
   render() {
     return (
       <AppContainer>
-        <ScrollToTopPopup />
-        {this.state.NomeOuDetalhe ? (
-          <div>
-            <DetalhePersonagem characterName={this.state.characterName} />
-            <BackButton onClick={this.BotãoDeVoltar} />
-          </div>
+        {this.state.ListarLivros ? (
+          <NomeLivros />
         ) : (
-          <NomePersonagem onCharacterClick={this.ClickPersonagem} />
+          <div>
+            {this.state.PersonagensOuDetalhes ? (
+              <div>
+                <DetalhePersonagem characterName={this.state.characterName} />
+                <BackButton onClick={this.BotãoDeVoltar} />
+              </div>
+            ) : (
+              <NomePersonagem onCharacterClick={this.ClickPersonagem} />
+            )}
+          </div>
         )}
+        <ScrollToTopPopup />
       </AppContainer>
     );
   }
