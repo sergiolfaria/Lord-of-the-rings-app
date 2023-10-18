@@ -2,8 +2,14 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const CharacterDetailsContainer = styled.div`
-  font-size: 14px;
-  margin-top: 10px;
+  background-color: #f7f7f7c8;
+  max-width: 60%;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  display: block;
 `;
 class CharacterDetails extends Component {
   render() {

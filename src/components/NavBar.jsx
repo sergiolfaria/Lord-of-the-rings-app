@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const NavbarContainer = styled.div`
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   background-color: #333;
   color: white;
@@ -31,7 +31,7 @@ const RightContent = styled.div`
 `;
 
 const Navbar = (props) => {
-  const [selectedOption, setSelectedOption] = useState('personagens'); // Opção padrão selecionada
+  const [selectedOption, setSelectedOption] = React.useState('personagens'); // Opção padrão selecionada
 
   const { onLivrosClick, onFilmesClick, onPersonagensClick } = props;
 

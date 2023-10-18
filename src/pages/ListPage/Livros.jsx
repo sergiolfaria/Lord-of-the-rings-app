@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import Loading from '../../components/Loading';
 
 const LivrosContainer = styled.div`
   background-color: #f7f7f7c8;
@@ -37,7 +38,7 @@ const LivroItem = styled.li`
   }
 `;
 
-class NomeLivros extends Component {
+class Livros extends Component {
   state = {
     apiData: [],
     loading: true,
@@ -64,7 +65,7 @@ class NomeLivros extends Component {
 
     return (
       <LivrosContainer>
-        {loading && <p>Carregando...</p>}
+        {loading && <Loading />}
         {error && <ErrorMessage>Error: {error}</ErrorMessage>}
         {apiData.length > 0 && (
           <div>
@@ -85,4 +86,4 @@ class NomeLivros extends Component {
   }
 }
 
-export default NomeLivros;
+export default Livros;

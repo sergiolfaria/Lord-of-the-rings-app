@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import Loading from '../../components/Loading';
 import FilterFields from '../../components/FilterFields';
 import CharacterCard from '../../components/CharacterCard';
 
@@ -10,20 +9,6 @@ const Container = styled.div`
   font-family: Arial, sans-serif;
   text-align: center;
   margin-top: 50px;
-`;
-
-const Loading = styled.div`
-  font-size: 10vh;
-  color: #333;
-`;
-
-const Spinner = styled(FontAwesomeIcon)`
-  animation: spin 1s linear infinite;
-
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
 `;
 
 const Error = styled.div`
@@ -39,7 +24,7 @@ const CharacterGrid = styled.div`
 `;
 
 
-class NomePersonagem extends Component {
+class Personagens extends Component {
   state = {
     apiData: null,
     loading: true,
@@ -54,15 +39,22 @@ class NomePersonagem extends Component {
   };
 
   componentDidMount() {
-    axios.get('https://the-one-api.dev/v2/character', {
-      headers: {
-        Authorization: `Bearer qSslRdCPhKmZlupbd0vf`
-      }
-    })
-      .then(response => {
-        this.setState({ apiData: response.data.docs, loading: false, error: null });
+    axios
+      .get('https://the-one-api.dev/v2/character', {
+        headers: {
+          Authorization: `Bearer qSslRdCPhKmZlupbd0vf`,
+        },
       })
-      .catch(error => {
+      .then((response) => {
+        const apiData = response.data.docs.map((character) => ({
+          ...character,
+          race: character.race || 'Desconhecido ou não possui',
+          birth: character.birth || 'Desconhecido ou não possui',
+        }));
+
+        this.setState({ apiData, loading: false, error: null });
+      })
+      .catch((error) => {
         console.error('Erro ao buscar dados:', error);
         this.setState({ loading: false, error: 'Erro ao carregar dados.' });
       });
@@ -96,7 +88,7 @@ class NomePersonagem extends Component {
     const filteredCharacters = apiData ? apiData.filter((character) =>
       character.name.toLowerCase().includes(filterText.toLowerCase()) &&
       (selectedRace === 'All' || character.race.toLowerCase() === selectedRace.toLowerCase()) &&
-      (selectedRealm === 'All' || 
+      (selectedRealm === 'All' ||
         (selectedRealm.toLowerCase() === 'desconhecido' && (!character.realm || character.realm.trim() === '')) ||
         (character.realm && character.realm.toLowerCase() === selectedRealm.toLowerCase())
       )
@@ -104,7 +96,7 @@ class NomePersonagem extends Component {
 
     return (
       <Container>
-        {loading && <Loading><Spinner icon={faSpinner} /> Carregando...</Loading>}
+        {loading && <Loading />}
         {error && <Error>Error: {error}</Error>}
         {apiData && (
           <div>
@@ -131,4 +123,4 @@ class NomePersonagem extends Component {
   }
 }
 
-export default NomePersonagem;
+export default Personagens;

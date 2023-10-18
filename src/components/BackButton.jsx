@@ -10,7 +10,7 @@ const StyledBackButton = styled.button`
   top: 10px;
   left: 10px;
   cursor: pointer;
-  background: #333;
+  background:  #fdad00;
   color: #fff;
   padding: 10px 20px;
   border: none;

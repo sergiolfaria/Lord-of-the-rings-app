@@ -67,16 +67,16 @@ class FilterFields extends Component {
         <RaceSelect value={selectedRace} onChange={onRaceSelectChange}>
           <option value="All">Todas as Raças</option>
           {uniqueRaces.map((race, index) => (
-            <option key={index} value={race}>
-              {race}
-            </option>
+            <option key={index} value={race.length > 0 ? race : 'desconhecido'}>
+            {race.length > 0 ? race: 'Desconhecido/Não possui'}
+          </option>
           ))}
         </RaceSelect>
         <RealmSelect value={selectedRealm} onChange={onRealmSelectChange}>
           <option value="All">Todos os Reinos</option>
           {uniqueRealms.map((realm, index) => (
             <option key={index} value={realm.length > 0 ? realm : 'desconhecido'}>
-              {realm.length > 0 ? realm : 'Desconhecido'}
+              {realm.length > 0 ? realm : 'Desconhecido/Não possui'}
             </option>
           ))}
         </RealmSelect>

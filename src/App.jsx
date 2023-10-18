@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import NomePersonagem from "./pages/ListPage/NomePersonagem";
+import Personagens from './pages/ListPage/Personagens';
 import DetalhePersonagem from "./pages/DetailPage/DetalhesPersonagem";
-import NomeLivros from './pages/ListPage/NomesLivros';
-import NomeFilmes from "./pages/ListPage/NomesFilmes";
+import Livros from './pages/ListPage/Livros';
+import Filmes from "./pages/ListPage/Filmes";
 import ScrollToTopPopup from './components/ScrollToTopPopup';
 import BackButton from './components/BackButton';
 import Navbar from './components/NavBar';
@@ -21,7 +21,7 @@ const BackgroundImage = styled.div`
   background-image: url('https://images4.alphacoders.com/172/172304.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  z-index: -1; /* Coloque o background atrás do conteúdo */
+  z-index: -1;
 `;
 
 const LogoImage = styled.img`
@@ -91,9 +91,9 @@ class App extends Component {
         <LogoImage src="https://upload.wikimedia.org/wikipedia/pt/0/0c/The_Lord_of_the_Rings_logo.png" alt="logo" />
         {
           this.state.ListarLivros ? (
-            <NomeLivros />
+            <Livros />
           ) : this.state.ListarFilmes ? (
-            <NomeFilmes />
+            <Filmes />
           ) : (
             <div>
               {this.state.PersonagensOuDetalhes ? (
@@ -102,7 +102,7 @@ class App extends Component {
                   <BackButton onClick={this.BotãoDeVoltar} />
                 </div>
               ) : (
-                <NomePersonagem onCharacterClick={this.ClickPersonagem} />
+                <Personagens onCharacterClick={this.ClickPersonagem} />
               )}
             </div>
           )

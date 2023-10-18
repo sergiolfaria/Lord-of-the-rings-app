@@ -7,7 +7,7 @@ const PopupContainer = styled.div`
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: #333;
+  background:  #fdad00;
   color: #fff;
   padding: 10px 20px;
   border-radius: 5px;
