@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+#Lord of the Rings App
+O Lord of the Rings App é uma aplicação web desenvolvida utilizando React e Axios. Ele utiliza a API disponível em the-one-api.dev para fornecer aos usuários informações abrangentes sobre a série de filmes e livros "O Senhor dos Anéis", com foco especial em dados de personagens.
+ Caso queira testar sem ter que instalar em sua maquina https://lord-of-the-rings-app.surge.sh
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#Páginas
+Personagens
+A página Personagens serve como a principal do aplicativo. Ela exibe uma lista completa de personagens da série "O Senhor dos Anéis". Os usuários podem aplicar diversos filtros, como por reino, e até mesmo buscar personagens pelo nome.
 
-## Available Scripts
+#Filmes
+A página Filmes fornece uma lista completa de todos os filmes na série "O Senhor dos Anéis". Os usuários podem acessar detalhes sobre cada filme.
 
-In the project directory, you can run:
+#Livros
+A página Livros oferece informações sobre todos os livros na série "O Senhor dos Anéis".
 
-### `npm start`
+#Detalhes do Personagem
+Ao clicar em um personagem na página Personagens, os usuários são redirecionados para a página de Detalhes do Personagem. Aqui, é possível acessar informações detalhadas sobre o personagem selecionado, incluindo um link para a página correspondente na Wiki.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#Navegação
+Uma barra de navegação está incluída para alternar facilmente entre as páginas de Personagens, Filmes e Livros.
+Na página de Detalhes do Personagem, um botão permite que os usuários retornem à página de Personagens.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#Aprimorando a Experiência do Usuário
+Dada a grande quantidade de personagens na série, foi implementado um recurso de "voltar ao topo" na página de Personagens. Ele aparece automaticamente quando o usuário rola para baixo, permitindo uma navegação fácil de volta ao topo da lista de personagens sem rolagem manual.
 
-### `npm test`
+#Como Usar
+Para começar a usar o Lord of the Rings App, siga estas etapas:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## **Como Usar**
 
-### `npm run build`
+1. Escolha qual pagina deseja.
+2.  Caso  seja "Mostrar personagens" Escreva e selecione os filtros que deseja.
+3. Pressione no card com o nome do personagem escolhido e va para detalhes.
+4. clique em voltar no topo da pagina caso deje voltar
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## **Instruções de Instalação**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Crie um projeto React em sua máquina:
+    
+    ```bash
+    npx create-react-app lord-of-the-rings-app
+    ```
+    
+2. Navegue até o diretório do projeto:
+    
+    ```bash
+    cd lord-of-the-rings-app
+    ```
+    
+3. Clone o repositório:
+    
+    ```bash
+    git clone [https://github.com/sergiolfaria/Lord-of-the-rings-app.git]
+    ```
+    
+4. Instale as dependências necessárias:
+    
+    ```
+    npm install
+    ```
+    
+5. Inicie o projeto:
+   ```
+    npm start
+   
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+React: Uma biblioteca JavaScript popular para construir interfaces de usuário.
+Axios: Um cliente HTTP baseado em promessas para fazer solicitações de API.
+the-one-api.dev: A fonte da API para buscar dados relacionados a "O Senhor dos Anéis".
