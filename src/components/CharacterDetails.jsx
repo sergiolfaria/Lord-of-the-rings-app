@@ -13,8 +13,8 @@ const CharacterDetailsContainer = styled.div`
   font-family: 'SenhoDosAneis';
   margin-top: -20px;
   box-shadow: -12px 12px 10px rgb(0 0 0);
-  position: relative; /* Adicionado para posicionar a imagem no container */
-  overflow: hidden; /* Adicionado para garantir que a imagem não ultrapasse os limites do container */
+  position: relative; 
+  overflow: hidden; 
   background: url('https://qph.cf2.quoracdn.net/main-qimg-ba2e3f117eaa02147edf8270a5266d1c') no-repeat right bottom/20%; /* Adicionado o fundo com a imagem */
 `;
 
