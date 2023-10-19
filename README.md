@@ -1,28 +1,28 @@
-#Lord of the Rings App
+## Lord of the Rings App
 O Lord of the Rings App é uma aplicação web desenvolvida utilizando React e Axios. Ele utiliza a API disponível em the-one-api.dev para fornecer aos usuários informações abrangentes sobre a série de filmes e livros "O Senhor dos Anéis", com foco especial em dados de personagens.
  Caso queira testar sem ter que instalar em sua maquina https://lord-of-the-rings-app.surge.sh
 
-#Páginas
+## Páginas
 Personagens
 A página Personagens serve como a principal do aplicativo. Ela exibe uma lista completa de personagens da série "O Senhor dos Anéis". Os usuários podem aplicar diversos filtros, como por reino, e até mesmo buscar personagens pelo nome.
 
-#Filmes
+## Filmes
 A página Filmes fornece uma lista completa de todos os filmes na série "O Senhor dos Anéis". Os usuários podem acessar detalhes sobre cada filme.
 
-#Livros
+## Livros
 A página Livros oferece informações sobre todos os livros na série "O Senhor dos Anéis".
 
-#Detalhes do Personagem
+## Detalhes do Personagem
 Ao clicar em um personagem na página Personagens, os usuários são redirecionados para a página de Detalhes do Personagem. Aqui, é possível acessar informações detalhadas sobre o personagem selecionado, incluindo um link para a página correspondente na Wiki.
 
-#Navegação
+## Navegação
 Uma barra de navegação está incluída para alternar facilmente entre as páginas de Personagens, Filmes e Livros.
 Na página de Detalhes do Personagem, um botão permite que os usuários retornem à página de Personagens.
 
-#Aprimorando a Experiência do Usuário
+## Aprimorando a Experiência do Usuário
 Dada a grande quantidade de personagens na série, foi implementado um recurso de "voltar ao topo" na página de Personagens. Ele aparece automaticamente quando o usuário rola para baixo, permitindo uma navegação fácil de volta ao topo da lista de personagens sem rolagem manual.
 
-#Como Usar
+## Como Usar
 Para começar a usar o Lord of the Rings App, siga estas etapas:
 
 ## **Como Usar**
