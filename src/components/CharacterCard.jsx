@@ -4,11 +4,11 @@ import styled from 'styled-components';
 const Card = styled.div`
   flex-basis: calc(33.33% - 20px);
   margin: 0 5px 5px 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #f1e4b8c6;
   text-align: center;
   cursor: pointer;
   transition: 0.3s;
-  background-color: #ffffffac;
+  background-color: #f1e4b8c6;
   &:hover {
     transform: scale(1.08);
     background-color: #c7a302cc;
