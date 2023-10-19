@@ -14,7 +14,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'SenhoDosAneis';
     src: url(${MyFontTTF}) format('truetype');
   }
-
 `;
 
 const AppContainer = styled.div`

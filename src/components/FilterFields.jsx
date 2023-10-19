@@ -39,19 +39,15 @@ const StyledSelect = styled.select`
   appearance: none !important;
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="%23000000"><path d="M8 16l8-11H0z"/></svg>'); /* Ícone de chevron para baixo em SVG */
   background-repeat: no-repeat;
-  background-position: right 1rem center; /* Posição do ícone no canto direito com espaço à direita de 1rem */
-  background-color: #ffffff; /* Cor de fundo branco */
+  background-position: right 1rem center; 
+  background-color: #ffffff; 
   
-  background-size: 12px; /* Define o tamanho do ícone */
+  background-size: 12px; 
 
   &:focus {
     outline: none;
   }
 `;
-
-
-
-
 
 const ClearFiltersButton = styled.button`
   font-family: 'SenhoDosAneis';
