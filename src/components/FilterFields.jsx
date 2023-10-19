@@ -19,12 +19,15 @@ const RaceSelect = styled.select`
   font-size: 16px;
   padding: 5px;
   cursor: pointer;
+  height: 32px;
 `;
 
 const RealmSelect = styled.select`
   font-size: 16px;
   padding: 5px;
   cursor: pointer;
+  height: 32px;
+  
 `;
 
 const ClearFiltersButton = styled.button`
@@ -36,7 +39,6 @@ const ClearFiltersButton = styled.button`
   cursor: pointer;
   margin-left: 10px;
   transition: background-color 0.3s;
-
   &:hover {
     background-color: #ca8a00;
   }

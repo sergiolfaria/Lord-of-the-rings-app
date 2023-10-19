@@ -5,7 +5,7 @@ const NavbarContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background-color: #333;
+  background-color: transparent;
   color: white;
 `;
 
@@ -14,14 +14,17 @@ const NavbarButton = styled.button`
   padding: 2vh 20px;
   background: none;
   border: none;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  color: ${(props) => (props.selected ? 'black' : 'white')};
+  color: ${(props) => (props.selected ? 'white' : 'white')};
   cursor: pointer;
-  background-color: ${(props) => (props.selected ? '#fdad00' : 'transparent')};
+  background-color: ${(props) => (props.selected ? '#fdad0076' : 'transparent')};
+  border-bottom: 2px solid white;
+  border-width: ${(props) => (props.selected ? '2px' : '1px')} ;
+  border-radius: 2px;
+  margin-right: 10px;
 
   &:hover {
     background-color: #fdad00;
+    border-width: 2px;
   }
 `;
 
@@ -31,7 +34,7 @@ const RightContent = styled.div`
 `;
 
 const Navbar = (props) => {
-  const [selectedOption, setSelectedOption] = React.useState('personagens'); // Opção padrão selecionada
+  const [selectedOption, setSelectedOption] = React.useState('personagens');
 
   const { onLivrosClick, onFilmesClick, onPersonagensClick } = props;
 

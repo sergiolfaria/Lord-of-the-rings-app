@@ -60,6 +60,10 @@ class Livros extends Component {
       });
   }
 
+  handleBookClick = (livroName) => {
+    alert(`A função para obter detalhes do livro "${livroName}" está em desenvolvimento.`);
+  }
+
   render() {
     const { apiData, loading, error } = this.state;
 
@@ -74,6 +78,7 @@ class Livros extends Component {
               {apiData.map((livro, index) => (
                 <LivroItem
                   key={index}
+                  onClick={() => this.handleBookClick(livro.name)}
                 >
                   {livro.name}
                 </LivroItem>

@@ -20,7 +20,7 @@ const Spinner = styled(FontAwesomeIcon)`
 
 const Loading = () => (
   <LoadingContainer>
-    <Spinner icon={faSpinner} /> Carregando...
+    <Spinner icon={faSpinner} />
   </LoadingContainer>
 );
 

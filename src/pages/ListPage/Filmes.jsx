@@ -38,7 +38,6 @@ const FilmeItem = styled.li`
   }
 `;
 
-
 class Filmes extends Component {
   state = {
     apiData: [],
@@ -61,6 +60,10 @@ class Filmes extends Component {
       });
   }
 
+  handleFilmClick = (filmeName) => {
+    alert(`A função para obter detalhes do filme "${filmeName}" está em desenvolvimento.`);
+  }
+
   render() {
     const { apiData, loading, error } = this.state;
 
@@ -72,11 +75,12 @@ class Filmes extends Component {
           <div>
             <h1>Lista de Filmes</h1>
             <FilmeList>
-              {apiData.map((Filme, index) => (
+              {apiData.map((filme, index) => (
                 <FilmeItem
                   key={index}
+                  onClick={() => this.handleFilmClick(filme.name)}
                 >
-                  {Filme.name}
+                  {filme.name}
                 </FilmeItem>
               ))}
             </FilmeList>

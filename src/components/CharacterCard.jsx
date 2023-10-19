@@ -37,7 +37,6 @@ class CharacterCard extends Component {
         <Info>
           <p><strong>Raça:</strong> {character.race}</p>
           <p><strong>Reino:</strong> {character.realm || 'Desconhecido ou não possui'}</p>
-          <p><strong>Data de Nascimento:</strong> {character.birth}</p>
         </Info>
       </Card>
     );

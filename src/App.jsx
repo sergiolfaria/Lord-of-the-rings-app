@@ -6,7 +6,7 @@ import Livros from './pages/ListPage/Livros';
 import Filmes from "./pages/ListPage/Filmes";
 import ScrollToTopPopup from './components/ScrollToTopPopup';
 import BackButton from './components/BackButton';
-import Navbar from './components/NavBar';
+import Navbar from './components/NavBar'
 
 const AppContainer = styled.div`
   position: relative;
@@ -25,6 +25,7 @@ const BackgroundImage = styled.div`
 `;
 
 const LogoImage = styled.img`
+  filter: drop-shadow(13px 9px 4px black);
   max-width: 100%;
   height: auto;
   margin: 0 auto;
@@ -83,11 +84,13 @@ class App extends Component {
     return (
       <AppContainer>
         <BackgroundImage />
-        <Navbar
-          onLivrosClick={this.MostrarLivros}
-          onFilmesClick={this.MostrarFilmes}
-          onPersonagensClick={this.MostrarPersonagens}
-        />
+        {this.state.PersonagensOuDetalhes ? null : (
+          <Navbar
+            onLivrosClick={this.MostrarLivros}
+            onFilmesClick={this.MostrarFilmes}
+            onPersonagensClick={this.MostrarPersonagens}
+          />
+        )}
         <LogoImage src="https://upload.wikimedia.org/wikipedia/pt/0/0c/The_Lord_of_the_Rings_logo.png" alt="logo" />
         {
           this.state.ListarLivros ? (
@@ -108,7 +111,7 @@ class App extends Component {
           )
         }
         <ScrollToTopPopup />
-      </AppContainer >
+      </AppContainer>
     );
   }
 }

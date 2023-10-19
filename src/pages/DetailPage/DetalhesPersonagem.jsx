@@ -2,16 +2,12 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import CharacterDetails from '../../components/CharacterDetails';
+import Loading from '../../components/Loading';
 
 const Container = styled.div`
   font-family: Arial, sans-serif;
   text-align: center;
   margin-top: 50px;
-`;
-
-const Loading = styled.div`
-  font-size: 20px;
-  color: #333;
 `;
 
 const Error = styled.div`
@@ -50,11 +46,10 @@ class DetalhesPersonagem extends Component {
 
     return (
       <Container>
-        {loading && <Loading>Carregando...</Loading>}
+        {loading && <Loading />}
         {error && <Error>Error: {error}</Error>}
         {apiData && (
           <div>
-            <h1>Detalhes dos Personagens:</h1>
             {apiData.map((character, index) => (
               <div key={index}>
                 <CharacterDetails character={character} />
