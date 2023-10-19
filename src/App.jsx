@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import Personagens from './pages/ListPage/Personagens';
 import DetalhePersonagem from "./pages/DetailPage/DetalhesPersonagem";
 import Livros from './pages/ListPage/Livros';
@@ -7,6 +6,16 @@ import Filmes from "./pages/ListPage/Filmes";
 import ScrollToTopPopup from './components/ScrollToTopPopup';
 import BackButton from './components/BackButton';
 import Navbar from './components/NavBar'
+import styled, { createGlobalStyle } from 'styled-components';
+import MyFontTTF from './assests/RINGM___.TTF';
+
+const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'SenhoDosAneis';
+    src: url(${MyFontTTF}) format('truetype');
+  }
+
+`;
 
 const AppContainer = styled.div`
   position: relative;
@@ -83,6 +92,7 @@ class App extends Component {
   render() {
     return (
       <AppContainer>
+        <GlobalStyle/>
         <BackgroundImage />
         {this.state.PersonagensOuDetalhes ? null : (
           <Navbar

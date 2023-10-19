@@ -5,18 +5,27 @@ import Loading from '../../components/Loading';
 
 const FilmesContainer = styled.div`
   background-color: #f7f7f7c8;
-  max-width: 60%;
+  width: 50%;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: 0 auto;
   display: block;
+  font-family: 'SenhoDosAneis';
 `;
+const ContainerGeral = styled.div`
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items:center;
+      
+`
 
 const ErrorMessage = styled.p`
   color: #ff0000;
   font-weight: bold;
+  font-family: 'SenhoDosAneis';
 `;
 
 const FilmeList = styled.ul`
@@ -68,25 +77,27 @@ class Filmes extends Component {
     const { apiData, loading, error } = this.state;
 
     return (
-      <FilmesContainer>
+      <ContainerGeral>
         {loading && <Loading />}
-        {error && <ErrorMessage>Error: {error}</ErrorMessage>}
-        {apiData.length > 0 && (
-          <div>
-            <h1>Lista de Filmes</h1>
-            <FilmeList>
-              {apiData.map((filme, index) => (
-                <FilmeItem
-                  key={index}
-                  onClick={() => this.handleFilmClick(filme.name)}
-                >
-                  {filme.name}
-                </FilmeItem>
-              ))}
-            </FilmeList>
-          </div>
-        )}
-      </FilmesContainer>
+          {apiData.length > 0 && (
+        <FilmesContainer>
+          {error && <ErrorMessage>Error: {error}</ErrorMessage>}
+            <div>
+              <h1>Lista de Filmes</h1>
+              <FilmeList>
+                {apiData.map((filme, index) => (
+                  <FilmeItem
+                    key={index}
+                    onClick={() => this.handleFilmClick(filme.name)}
+                  >
+                    {filme.name}
+                  </FilmeItem>
+                ))}
+              </FilmeList>
+            </div>
+        </FilmesContainer>
+          )}
+      </ContainerGeral>
     );
   }
 }

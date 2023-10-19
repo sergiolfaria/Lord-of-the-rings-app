@@ -6,6 +6,7 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 const LoadingContainer = styled.div`
   font-size: 10vh;
   color: white;
+  text-align: center;
 `;
 
 const Spinner = styled(FontAwesomeIcon)`

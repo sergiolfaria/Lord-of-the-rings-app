@@ -9,6 +9,7 @@ const Card = styled.div`
   cursor: pointer;
   transition: 0.3s;
   background-color: #f1e4b8c6;
+  font-family: 'SenhoDosAneis';
   &:hover {
     transform: scale(1.08);
     background-color: #c7a302cc;

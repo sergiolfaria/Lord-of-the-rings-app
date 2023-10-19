@@ -5,14 +5,21 @@ import Loading from '../../components/Loading';
 
 const LivrosContainer = styled.div`
   background-color: #f7f7f7c8;
-  max-width: 60%;
+  width: 50%;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 0 auto;
   display: block;
+  font-family: 'SenhoDosAneis';
 `;
+const ContainerGeral = styled.div`
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items:center;
+      
+`
 
 const ErrorMessage = styled.p`
   color: #ff0000;
@@ -68,25 +75,27 @@ class Livros extends Component {
     const { apiData, loading, error } = this.state;
 
     return (
-      <LivrosContainer>
+      <ContainerGeral>
         {loading && <Loading />}
-        {error && <ErrorMessage>Error: {error}</ErrorMessage>}
         {apiData.length > 0 && (
-          <div>
-            <h1>Lista de Livros</h1>
-            <LivroList>
-              {apiData.map((livro, index) => (
-                <LivroItem
-                  key={index}
-                  onClick={() => this.handleBookClick(livro.name)}
-                >
-                  {livro.name}
-                </LivroItem>
-              ))}
-            </LivroList>
-          </div>
+          <LivrosContainer>
+            {error && <ErrorMessage>Error: {error}</ErrorMessage>}
+            <div>
+              <h1>Lista de Livros</h1>
+              <LivroList>
+                {apiData.map((livro, index) => (
+                  <LivroItem
+                    key={index}
+                    onClick={() => this.handleBookClick(livro.name)}
+                  >
+                    {livro.name}
+                  </LivroItem>
+                ))}
+              </LivroList>
+            </div>
+          </LivrosContainer>
         )}
-      </LivrosContainer>
+      </ContainerGeral>
     );
   }
 }

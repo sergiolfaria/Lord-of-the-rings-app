@@ -1,49 +1,73 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+
 const FilterContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 `;
 
-const SearchInput = styled.input`
-  font-size: 16px;
-  padding: 5px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-`;
-
-const RaceSelect = styled.select`
-  font-size: 16px;
-  padding: 5px;
+const StyledSearchInput = styled.input`
+  font-family: 'SenhoDosAneis';
+  width: 20rem;
+  padding: 1rem 4rem 1rem 1rem;
+  background-color: white;
+  border: 0;
+  outline: 0;
+  border-radius: 0.25em;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  height: 32px;
-`;
 
-const RealmSelect = styled.select`
-  font-size: 16px;
-  padding: 5px;
-  cursor: pointer;
-  height: 32px;
-  
-`;
-
-const ClearFiltersButton = styled.button`
-  font-size: 16px;
-  padding: 8px 16px;
-  background-color: #fdad00;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  margin-left: 10px;
-  transition: background-color 0.3s;
-  &:hover {
-    background-color: #ca8a00;
+  &:focus {
+    outline: none !important;
+    
   }
 `;
 
+const StyledSelect = styled.select`
+  font-family: 'SenhoDosAneis';
+  width: 20rem;
+  padding: 1rem 3rem 1rem 1rem;
+  border: 0;
+  outline: 0;
+  border-radius: 0.25em;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  appearance: none !important;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="%23000000"><path d="M8 16l8-11H0z"/></svg>'); /* Ícone de chevron para baixo em SVG */
+  background-repeat: no-repeat;
+  background-position: right 1rem center; /* Posição do ícone no canto direito com espaço à direita de 1rem */
+  background-color: #ffffff; /* Cor de fundo branco */
+  
+  background-size: 12px; /* Define o tamanho do ícone */
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+
+
+
+
+const ClearFiltersButton = styled.button`
+  font-family: 'SenhoDosAneis';
+  font-size: 16px;
+  padding: 14px 20px;
+  background-color: #c7a302cc;
+  color: white;
+  border: none;
+  border-radius: 0.25em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color:#fdad00;
+  }
+`;
 class FilterFields extends Component {
   render() {
     const {
@@ -60,28 +84,28 @@ class FilterFields extends Component {
 
     return (
       <FilterContainer>
-        <SearchInput
+        <StyledSearchInput
           type="text"
           placeholder="Filtrar personagens"
           value={filterText}
           onChange={onFilterChange}
         />
-        <RaceSelect value={selectedRace} onChange={onRaceSelectChange}>
+        <StyledSelect value={selectedRace} onChange={onRaceSelectChange}>
           <option value="All">Todas as Raças</option>
           {uniqueRaces.map((race, index) => (
             <option key={index} value={race.length > 0 ? race : 'desconhecido'}>
-            {race.length > 0 ? race: 'Desconhecido/Não possui'}
-          </option>
+              {race.length > 0 ? race : 'Desconhecido/Não possui'}
+            </option>
           ))}
-        </RaceSelect>
-        <RealmSelect value={selectedRealm} onChange={onRealmSelectChange}>
+        </StyledSelect>
+        <StyledSelect value={selectedRealm} onChange={onRealmSelectChange}>
           <option value="All">Todos os Reinos</option>
           {uniqueRealms.map((realm, index) => (
             <option key={index} value={realm.length > 0 ? realm : 'desconhecido'}>
               {realm.length > 0 ? realm : 'Desconhecido/Não possui'}
-            </option>
+            </option>       
           ))}
-        </RealmSelect>
+        </StyledSelect>
         <ClearFiltersButton onClick={onClearFilters}>Limpar Filtros</ClearFiltersButton>
       </FilterContainer>
     );

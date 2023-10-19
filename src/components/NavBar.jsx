@@ -10,6 +10,7 @@ const NavbarContainer = styled.div`
 `;
 
 const NavbarButton = styled.button`
+  font-family: 'SenhoDosAneis';
   margin: 0;
   padding: 2vh 20px;
   background: none;
