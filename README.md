@@ -24,9 +24,6 @@ Dada a grande quantidade de personagens na série, foi implementado um recurso d
 
 ## Como Usar
 Para começar a usar o Lord of the Rings App, siga estas etapas:
-
-## **Como Usar**
-
 1. Escolha qual pagina deseja.
 2.  Caso  seja "Mostrar personagens" Escreva e selecione os filtros que deseja.
 3. Pressione no card com o nome do personagem escolhido e va para detalhes.
