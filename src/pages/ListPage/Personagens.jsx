@@ -81,10 +81,9 @@ class Personagens extends Component {
 
   render() {
     const { apiData, loading, error, filterText, selectedRace, selectedRealm } = this.state;
-
     const uniqueRaces = apiData ? [...new Set(apiData.map(character => character.race))] : [];
-    const uniqueRealms = apiData ? [...new Set(apiData.map(character => character.realm))] : [];
-
+    const uniqueRealms = apiData ? [...new Set(apiData.map(character => character.realm || 'Desconhecido'))] : [];
+  
     const filteredCharacters = apiData ? apiData.filter((character) =>
       character.name.toLowerCase().includes(filterText.toLowerCase()) &&
       (selectedRace === 'All' || character.race.toLowerCase() === selectedRace.toLowerCase()) &&
@@ -93,7 +92,7 @@ class Personagens extends Component {
         (character.realm && character.realm.toLowerCase() === selectedRealm.toLowerCase())
       )
     ) : [];
-
+  
     return (
       <Container>
         {loading && <Loading />}
@@ -121,6 +120,8 @@ class Personagens extends Component {
       </Container>
     );
   }
+  
+  
 }
 
 export default Personagens;
