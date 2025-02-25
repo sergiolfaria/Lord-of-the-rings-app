@@ -7,7 +7,7 @@ import ScrollToTopPopup from './components/ScrollToTopPopup';
 import BackButton from './components/BackButton';
 import Navbar from './components/NavBar'
 import styled, { createGlobalStyle } from 'styled-components';
-import MyFontTTF from './assests/RINGM___.TTF';
+import MyFontTTF from '../public/assests/RINGM.otf';
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
