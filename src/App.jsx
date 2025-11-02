@@ -26,7 +26,7 @@ const BackgroundImage = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('https://images4.alphacoders.com/172/172304.jpg');
+  background-image: url('https://i.pinimg.com/1200x/38/72/87/3872873cfd844f36258d887919ae2588.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   z-index: -1;
